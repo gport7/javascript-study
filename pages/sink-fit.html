@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../style/sink-fit.css">
     <title>Sink Fit</title>
 </head>
 <body>
@@ -17,24 +17,45 @@
         <h3>Take variables for cabinet width and length, then use those variables to give the maximum size for a sink. 
             <br>Use the sizes to recommend preset sink models. </h3>
     </div>
-    <div class="simple-input">
-        <label for="cab-width">Inner cabinet width: </label>
-        <input type="text" id="cab-width-input" name="cab-width">
-    </div>  
-    <div class="simple-input">
-        <label for="cab-length">Inner cabinet length: </label>
-        <input type="text" id="cab-length-input" name="cab-length">
-    </div>  
-    <div class="simple-input">
-        <label for="side-space">Space allowed on sides: </label>
-        <input type="text" id="side-space" name="side-space" value="not implemented">
-    </div> 
-    <h4>Inner Cabinet Size:</h4>
-    <p>WIDTH: <span id="cab-width-ouput"></span></p>
-    <p>LENGTH: <span id="cab-length-ouput"></span></p>
-    <h4>Maximum Sink Size:</h4>
-    <p>WIDTH: <span id="sink-width-output"></span></p>
-    <p>LENGTH: <span id="sink-length-output"></span></p>
+    <div class="main">
+        <div class="fractions">
+            <p>1/16 = .0625</p>
+            <p>1/8 = .125</p>
+            <p>3/16 = .1875</p>
+            <p>1/4 = .25</p>
+            <p>5/16 = .3125</p>
+            <p>3/8 = .375</p>
+            <p>7/16 = .4375</p>
+            <p>1/2 =.5</p>
+            <p>9/16 = .5625</p>
+            <p>5/8 = .625</p>
+            <p>11/16 = .6875</p>
+            <p>3/4 = .75</p>
+            <p>13/16 = .8125</p>
+            <p>7/8 = .875</p>
+            <p>15/16 = .9375</p>
+        </div>
+        <div class="parameters">
+            <div class="simple-input">
+                <label for="cab-width">Inner cabinet width: </label>
+                <input type="text" id="cab-width-input" name="cab-width">
+            </div>  
+            <div class="simple-input">
+                <label for="cab-length">Inner cabinet length: </label>
+                <input type="text" id="cab-length-input" name="cab-length">
+            </div>  
+            <div class="simple-input">
+                <label for="side-space">Space allowed on sides: </label>
+                <input type="text" id="side-space" name="side-space" value="not implemented">
+            </div> 
+            <h4>Inner Cabinet Size:</h4>
+            <p>WIDTH: <span id="cab-width-ouput"></span></p>
+            <p>LENGTH: <span id="cab-length-ouput"></span></p>
+            <h4>Maximum Sink Size:</h4>
+            <p>WIDTH: <span id="sink-width-output"></span></p>
+            <p>LENGTH: <span id="sink-length-output"></span></p>
+        </div> 
+    </div>
     <script>
         //declare variables for cabinet input
         let cabWidthInput = document.getElementById("cab-width-input");
