@@ -50,3 +50,10 @@ a {
     color: rgb(17, 99, 54);
     margin-left: 50px;
 }
+
+.simple-input {
+    display: flex;
+    gap: 10px;
+    margin-left: 50px;
+    margin-top: 10px;
+}

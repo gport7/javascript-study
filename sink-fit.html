@@ -17,12 +17,49 @@
         <h3>Take variables for cabinet width and length, then use those variables to give the maximum size for a sink. 
             <br>Use the sizes to recommend preset sink models. </h3>
     </div>
-    <h4>Cabinet width</h4>
-    <p id="cab-width"></p>
-    <h4>Cabinet length</h4>
-    <p id="cab-length"></p>
+    <div class="simple-input">
+        <label for="cab-width">Inner cabinet width: </label>
+        <input type="text" id="cab-width-input" name="cab-width">
+    </div>  
+    <div class="simple-input">
+        <label for="cab-length">Inner cabinet length: </label>
+        <input type="text" id="cab-length-input" name="cab-length">
+    </div>  
+    <div class="simple-input">
+        <label for="side-space">Space allowed on sides: </label>
+        <input type="text" id="side-space" name="side-space" value="not implemented">
+    </div> 
+    <h4>Inner Cabinet Size:</h4>
+    <p>WIDTH: <span id="cab-width-ouput"></span></p>
+    <p>LENGTH: <span id="cab-length-ouput"></span></p>
+    <h4>Maximum Sink Size:</h4>
+    <p>WIDTH: <span id="sink-width-output"></span></p>
+    <p>LENGTH: <span id="sink-length-output"></span></p>
     <script>
-    
+        //declare variables for cabinet input
+        let cabWidthInput = document.getElementById("cab-width-input");
+        let cabLengthInput = document.getElementById("cab-length-input");
+        //add listeners to cabinet input
+        cabWidthInput.addEventListener("input", cabWidthDefine);
+        cabLengthInput.addEventListener("input", cabLengthDefine);
+        //declare variables for cabinet output text in the HTML
+        let cabWidthOutput = document.getElementById("cab-width-ouput");
+        let cabLengthOutput = document.getElementById("cab-length-ouput");
+        //declare variable for sink output text in the HTML
+        let sinkWidthOutput = document.getElementById("sink-width-output");
+        let sinkLengthOutput = document.getElementById("sink-length-output");
+        //make the functions that set the text content of sink and cabinet output
+        function cabWidthDefine (e) {
+            cabWidthOutput.textContent = e.target.value;
+            sinkWidthOutput.textContent = e.target.value - 5;
+        }
+        function cabLengthDefine (e) {
+            cabLengthOutput.textContent = e.target.value;
+            sinkLengthOutput.textContent = e.target.value - 5;
+        }
+
+        //reprogram this TOMORROW so that all calulations happen with listeners THEN everything is pushed out to HTML with listeners
+
     </script>
 </body>
 </html>
