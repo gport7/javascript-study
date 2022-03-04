@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>String Play 1</title>
+</head>
+<body>
+    <div class="header">
+        <!-- Date mm-dd-yyy -->
+        <h1>3-3-2022</h1>
+        <!-- Exercise title -->
+        <h2>String Play 1</h2>
+        <!-- Exercise explanation -->
+        <h3>Prompt for a string, then perform various functions.</h3>
+    </div>
+    <h4>Input String:</h4>
+    <p id="demo"></p>
+    <h4>Reverse String:</h4>
+    <p id="reverse"></p>
+    <script>
+        //define inputString variable
+        let inputString = prompt("Please input a string", "String goes here");
+        //demo
+        document.getElementById("demo").innerHTML = inputString;
+        //reverse
+        let reverseString = "";
+        function reverse (string) {
+            for (let i = string.length - 1; i >= 0; i--){
+                reverseString += string[i];
+            }
+            document.getElementById("reverse").innerHTML = reverseString;
+        }
+        reverse(inputString);
+    </script>
+</body>
+</html>
