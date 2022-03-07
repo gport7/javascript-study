@@ -12,7 +12,7 @@
         <!-- Date mm-dd-yyy -->
         <h1>3-4-2022</h1>
         <!-- Exercise title -->
-        <h2>Sink Fit</h2>
+        <h2>Undermount Sink Fitter</h2>
         <!-- Exercise explanation -->
         <h3>Take variables for cabinet width and length, then use those variables to give the maximum size for a sink. 
             <br>Use the sizes to recommend preset sink models. </h3>
@@ -45,19 +45,16 @@
                 <input type="text" id="cab-length-input" name="cab-length">
             </div>  
             <div class="simple-input">
-                <label for="side-space">Space on sides of sink: </label>
+                <label for="side-space">Gap next to sink: </label>
                 <input type="text" id="side-space-input" name="side-space" value="2.25">
             </div> 
             <div class="simple-input">
-                <label for="back-space">Space behind sink: </label>
+                <label for="back-space">Gap behind sink: </label>
                 <input type="text" id="back-space-input" name="back-space" value="3">
-            </div> 
-            <h4>Inner Cabinet Size:</h4>
-            <p>WIDTH: <span id="cab-width-ouput"></span></p>
-            <p>LENGTH: <span id="cab-length-ouput"></span></p>
-            <h4>Maximum Sink Size:</h4>
-            <p>WIDTH: <span id="sink-width-output"></span></p>
-            <p>LENGTH: <span id="sink-length-output"></span></p>
+            </div>
+            <h4>Forumlas:</h4>
+            <p>Maximum Overall Sink Width = Cabinet Width - (2x Side Space)</p>
+            <p>Maximum Overall Sink Length = Cabinet Length - Back Space</p>     
         </div> 
     </div>
     <script>
@@ -82,12 +79,12 @@
         backSpaceInput.addEventListener("input", updateResults);
         //run function to use input
         function updateResults () {
-            //record all input boxes to variables
+            //record values from input
             recordWidth();
             recordLength();
             recordSideSpace();
             recordBackSpace();
-            //calculate all formulas
+            //calculations
             calculate();
             //display all numbers
             //screen compatible sink objects
@@ -104,11 +101,11 @@
         }
         function recordSideSpace () {
             sideSpace = document.getElementById("side-space-input").value;
-            console.log(`sideSpace: ${sideSpace}`);
+            console.log(`side space: ${sideSpace}`);
         }
         function recordBackSpace () {
             backSpace = document.getElementById("back-space-input").value;
-            console.log(`backSpace: ${backSpace}`);
+            console.log(`back space: ${backSpace}`);
         }
         //calculations
         function calculate() {

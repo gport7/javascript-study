@@ -14,7 +14,6 @@ body {
 .header {
     display: flex;
     flex-direction: column;
-    /* text-align: center; */
     background-color: rgb(22, 54, 43);
     padding-left: 50px;
 }
@@ -38,23 +37,28 @@ body {
     margin-bottom: 20px;
 }
 
-h4 {
-    margin: 10px 100px;
-}
-
-p {
-    margin: 10px 120px;
+.fractions {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 20px;
 }
 
 a {
     color: rgb(17, 99, 54);
     margin-left: 50px;
 }
+input {
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 2px;
+    min-width: 20px;
+}
 
 .simple-input {
     display: flex;
+    justify-content: flex-end;
+    align-items: center;
     gap: 10px;
-    margin-left: 50px;
     margin-top: 10px;
 }
 
