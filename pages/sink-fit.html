@@ -45,8 +45,12 @@
                 <input type="text" id="cab-length-input" name="cab-length">
             </div>  
             <div class="simple-input">
-                <label for="side-space">Space allowed on sides: </label>
-                <input type="text" id="side-space" name="side-space" value="not implemented">
+                <label for="side-space">Space on sides of sink: </label>
+                <input type="text" id="side-space-input" name="side-space" value="2.25">
+            </div> 
+            <div class="simple-input">
+                <label for="back-space">Space behind sink: </label>
+                <input type="text" id="back-space-input" name="back-space" value="3">
             </div> 
             <h4>Inner Cabinet Size:</h4>
             <p>WIDTH: <span id="cab-width-ouput"></span></p>
@@ -57,30 +61,62 @@
         </div> 
     </div>
     <script>
-        //declare variables for cabinet input
+        //declare variables for calculations
+        let width = document.getElementById("cab-width-input").value;
+        let length = document.getElementById("cab-length-input").value;
+        let sideSpace = document.getElementById("side-space-input").value;
+        let backSpace = document.getElementById("back-space-input").value;
+        let maxSinkWidth = 0;
+        let maxSinkLength = 0;
+        //use input on page load (in case of page refresh)
+        updateResults();
+        //declare variables for cabinet input boxes
         let cabWidthInput = document.getElementById("cab-width-input");
         let cabLengthInput = document.getElementById("cab-length-input");
-        //add listeners to cabinet input
-        cabWidthInput.addEventListener("input", cabWidthDefine);
-        cabLengthInput.addEventListener("input", cabLengthDefine);
-        //declare variables for cabinet output text in the HTML
-        let cabWidthOutput = document.getElementById("cab-width-ouput");
-        let cabLengthOutput = document.getElementById("cab-length-ouput");
-        //declare variable for sink output text in the HTML
-        let sinkWidthOutput = document.getElementById("sink-width-output");
-        let sinkLengthOutput = document.getElementById("sink-length-output");
-        //make the functions that set the text content of sink and cabinet output
-        function cabWidthDefine (e) {
-            cabWidthOutput.textContent = e.target.value;
-            sinkWidthOutput.textContent = e.target.value - 5;
+        let sideSpaceInput = document.getElementById("side-space-input");
+        let backSpaceInput = document.getElementById("back-space-input");
+        //add listeners to cabinet input boxes
+        cabWidthInput.addEventListener("input", updateResults);
+        cabLengthInput.addEventListener("input", updateResults);
+        sideSpaceInput.addEventListener("input", updateResults);
+        backSpaceInput.addEventListener("input", updateResults);
+        //run function to use input
+        function updateResults () {
+            //record all input boxes to variables
+            recordWidth();
+            recordLength();
+            recordSideSpace();
+            recordBackSpace();
+            //calculate all formulas
+            calculate();
+            //display all numbers
+            //screen compatible sink objects
+            //display sinks
+        }        
+        //retrieve values from input
+        function recordWidth() {
+            width = document.getElementById("cab-width-input").value;
+            console.log(`width: ${width}`);
         }
-        function cabLengthDefine (e) {
-            cabLengthOutput.textContent = e.target.value;
-            sinkLengthOutput.textContent = e.target.value - 5;
+        function recordLength () {
+            length = document.getElementById("cab-length-input").value;
+            console.log(`length: ${length}`);
         }
-
-        //reprogram this TOMORROW so that all calulations happen with listeners THEN everything is pushed out to HTML with listeners
-
+        function recordSideSpace () {
+            sideSpace = document.getElementById("side-space-input").value;
+            console.log(`sideSpace: ${sideSpace}`);
+        }
+        function recordBackSpace () {
+            backSpace = document.getElementById("back-space-input").value;
+            console.log(`backSpace: ${backSpace}`);
+        }
+        //calculations
+        function calculate() {
+            maxSinkWidth = width - 2 * sideSpace;
+            maxSinkLength = length - backSpace;
+            console.log(`max sink width: ${maxSinkWidth}`);
+            console.log(`max sink length: ${maxSinkLength}`);
+        }    
     </script>
 </body>
 </html>
