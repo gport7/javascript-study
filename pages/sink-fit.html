@@ -14,11 +14,12 @@
         <!-- Exercise title -->
         <h2>Undermount Sink Fitter</h2>
         <!-- Exercise explanation -->
-        <h3>Take variables for cabinet width and length, then use those variables to give the maximum size for a sink. 
-            <br>Use the sizes to recommend preset sink models. </h3>
+        <h3>Use inner cabinet dimensions to determine maximum sink size. 
+            <br>Recommend sink models based on results. </h3>
     </div>
     <div class="main">
-        <div class="fractions">
+        <div class="conversions">
+            <h4>Conversions:</h4>
             <p>1/16 = .0625</p>
             <p>1/8 = .125</p>
             <p>3/16 = .1875</p>
@@ -36,6 +37,7 @@
             <p>15/16 = .9375</p>
         </div>
         <div class="parameters">
+            <h4>Inputs:</h4>
             <div class="simple-input">
                 <label for="cab-width">Inner cabinet width: </label>
                 <input type="text" id="cab-width-input" name="cab-width">
@@ -52,10 +54,26 @@
                 <label for="back-space">Gap behind sink: </label>
                 <input type="text" id="back-space-input" name="back-space" value="3">
             </div>
-            <h4>Forumlas:</h4>
-            <p>Maximum Overall Sink Width = Cabinet Width - (2x Side Space)</p>
-            <p>Maximum Overall Sink Length = Cabinet Length - Back Space</p>     
+            <div class="results">
+                <h5>Cabinet Opening</h5>
+                <h6 id="cab-dims"></h6>
+                <h5 >Maximum Overall Sink Size</h5>
+                <h6 id="sink-dims"></h6>
+            </div>
         </div> 
+        <div class="formulas">
+            <h4>Formulas:</h4>
+            <p>Maximum Overall Sink Width = Cabinet Width - (2x Side Gap)</p>
+            <p>Maximum Overall Sink Length = Cabinet Length - Back Gap</p>
+            <h4 class="warning">WARNING</h4>
+            <ul>
+                <li>This tool is a guide. Please double check the dimensions against your unique cabinet and fixture configuration.</li>           
+                <li>This calculator relies on the assumption that there are no backsplashes, and the thickness of the cabinet at the back is .75".</li>
+                <li>Backsplashes may encroach on back cabinet opening if the cabinet is pushed to the wall.
+                    <br>3cm splashes will encroach a maximum of about .5" (1.25" <em>[splash]</em> - .75" <em>[cabinet thickness]</em>).
+                    <br>Add .5" to the <strong><em>Gap behind sink</em></strong> to account for this encroachment when making calculations.</li> 
+            </ul>
+        </div>            
     </div>
     <script>
         //declare variables for calculations
@@ -65,6 +83,9 @@
         let backSpace = document.getElementById("back-space-input").value;
         let maxSinkWidth = 0;
         let maxSinkLength = 0;
+        //declare variables for expression
+        let cabDims = "";
+        let sinkDims = "";
         //use input on page load (in case of page refresh)
         updateResults();
         //declare variables for cabinet input boxes
@@ -87,6 +108,8 @@
             //calculations
             calculate();
             //display all numbers
+            showCabDims();
+            showSinkDims();
             //screen compatible sink objects
             //display sinks
         }        
@@ -109,11 +132,20 @@
         }
         //calculations
         function calculate() {
-            maxSinkWidth = width - 2 * sideSpace;
-            maxSinkLength = length - backSpace;
+            maxSinkWidth = (width * 1000 - 2000 * sideSpace) / 1000;
+            maxSinkLength = (length * 1000 - backSpace * 1000) / 1000;
             console.log(`max sink width: ${maxSinkWidth}`);
             console.log(`max sink length: ${maxSinkLength}`);
-        }    
+            cabDims = `${width}" x ${length}"`;
+            sinkDims = `${maxSinkWidth}" x ${maxSinkLength}"`;
+        }   
+        //display calculations
+        function showCabDims() {
+            document.getElementById('cab-dims').innerHTML = cabDims;
+        }
+        function showSinkDims() {
+            document.getElementById('sink-dims').innerHTML = sinkDims;
+        }
     </script>
 </body>
 </html>
